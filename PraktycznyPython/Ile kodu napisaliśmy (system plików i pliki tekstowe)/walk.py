@@ -46,7 +46,6 @@ def pathlib_walk(path):
     global total
 
     path_generator = pathlib.Path(path).rglob("*")
-    print(path_generator)
     for root in path_generator:
         splited_root = str(root).split(os.path.sep)
         if any([hiden for hiden in splited_root if hiden.startswith(".")]):
@@ -60,9 +59,11 @@ def main():
         sys.exit("usage: walk.py <path>")
 
     path = sys.argv[1]
-    print(f"Path: {path}")
-    if path.startswith("."):
-        path = os.path.abspath(".") + path[1:]
+    # print(f"Path: {path}")
+
+    # Ensure the path is absolute for passing hiden files and directories
+    # to the walk functions
+    path = os.path.abspath(path)
 
     global total
 
