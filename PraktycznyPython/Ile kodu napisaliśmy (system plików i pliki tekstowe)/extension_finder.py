@@ -6,6 +6,7 @@
 #!/usr/bin/env python3
 import sys
 import os
+import pathlib
 
 
 # This function recursively walks through a directory and collects file names in a global list.
@@ -29,6 +30,17 @@ def find_unique_extension(files):
     print(unique_ext)
 
 
+# This function takes a list of absolute file paths and collects unique file suffixes using the pathlib module, ignoring files that start with a dot.
+def find_unique_suffix(abspath_files):
+    unique_ext_pathlib = set()
+    for file in abspath_files:
+        if file.startswith('.'):
+            continue
+        # There is also a way to get the file externsion using os.path.splitext
+        # name, ext = os.path.splitext(file)
+        unique_ext_pathlib.add(pathlib.Path(file).suffix)
+    print(unique_ext_pathlib)
+
 
 def main():
     if len(sys.argv) != 2:
@@ -40,6 +52,8 @@ def main():
     files = list()
     recursive_walk(path)
     find_unique_extension(files)
+    abspath_files = [os.path.abspath(f) for f in files]
+    find_unique_suffix(abspath_files)
 
 
 if __name__ == '__main__':
