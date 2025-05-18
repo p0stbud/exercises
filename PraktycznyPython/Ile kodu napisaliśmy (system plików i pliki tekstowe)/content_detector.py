@@ -1,6 +1,12 @@
 # Kurs Praktyczny Python by Gynvael Coldwind
 # ex_1.4 Detekcja typu pliku po zawartości
 
+# This script detects the type of file based on its content.
+# It uses three methods:
+# A) Simple pattern matching
+# B) Regular expressions
+# C) Pygments library for advanced language detection
+# The script recursively checks all files in the given directory and its subdirectories.
 
 #!/usr/bin/env python3
 import sys
@@ -89,6 +95,8 @@ def is_code_re(path):
                         return lang
                     
 
+# Function checking if the file contains a specific pattern using Pygments. This is "C" problem from the exercise.
+# This is the most advanced method, but also the slowest.
 def is_code_lexer(path):
     with open(path, 'rb') as f:
         content = f.read()
@@ -98,6 +106,7 @@ def is_code_lexer(path):
             return lang
 
 
+# Recursive function to check all files in the directory and subdirectories.
 def recursive_detector(path):
     global program_lang
     dirlist = os.listdir(path)
