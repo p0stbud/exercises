@@ -1,0 +1,24 @@
+{
+    "int": 2,
+    "list[int]": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "list[string]": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+    ],
+    "dict": {
+        "type": "dict"
+    },
+    "float": 3.14,
+    "bool": true,
+    "null": null,
+    "string": "string"
+}

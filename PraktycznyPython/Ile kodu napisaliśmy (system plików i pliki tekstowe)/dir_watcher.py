@@ -6,7 +6,7 @@
 # A) Active polling
 # B) Watchdog library
 
-# #!/usr/bin/env python3
+#!/usr/bin/env python3
 import os
 import sys
 import time
